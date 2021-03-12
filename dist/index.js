@@ -2,24 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /* Module */
 class Strings {
-    static format(str, ...args) {
-        const strs = Array();
-        let arg;
-        for (arg of args) {
-            if (arg instanceof Array) {
-                let argAt;
-                for (argAt of arg) {
-                    strs.push(argAt);
-                }
-            }
-            else {
-                strs.push(arg);
-            }
-        }
-        return str.replace(/{(\d+)}/g, (match, nbr) => strs[nbr]
-            ? strs[nbr]
-            : match);
-    }
     static formatCode(id, length) {
         return id ? id.toString().padStart(length, '0') : '';
     }

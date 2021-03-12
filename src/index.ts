@@ -1,26 +1,5 @@
 /* Module */
 class Strings {
-    public static format(str: string, ...args: any[]): string {
-        const strs: string[] = Array();
-
-        let arg: any;
-        for (arg of args) {
-            if (arg instanceof Array) {
-                let argAt: any;
-                for (argAt of arg) {
-                    strs.push(argAt);
-                }
-            }
-            else {
-                strs.push(arg);
-            }
-        }
-
-        return str.replace(/{(\d+)}/g, (match: string, nbr: number): string => strs[nbr]
-            ? strs[nbr]
-            : match);
-    }
-
     public static formatCode(id: number, length: number): string {
         return id ? id.toString().padStart(length, '0') : '';
     }

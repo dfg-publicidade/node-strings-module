@@ -43,8 +43,8 @@ describe('index.ts', (): void => {
     });
 
     it('10. createFindRegex', async (): Promise<void> => {
-        expect(() => {
-            Strings.createFindRegex(undefined)
+        expect((): void => {
+            Strings.createFindRegex(undefined);
         }).to.throw('Regex string cannot be empty');
     });
 });

@@ -16,18 +16,25 @@ class Strings {
             : undefined;
     }
     static toUrl(value) {
+        if (!value) {
+            return '';
+        }
         const fromChars = 'àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;';
         const toChars = 'aaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------';
         const rgx = new RegExp(fromChars.split('').join('|'), 'g');
         return value.toString().toLowerCase()
             .replace(/\s+/g, '-') // Replace spaces with
             .replace(rgx, (char) => toChars.charAt(fromChars.indexOf(char))) // Replace special characters
-            .replace(/&/g, '-and-') // Replace & with ‘and’
+            .replace(/&/g, '-') // Replace & with ‘-‘
             .replace(/[^\w-]+/g, '') // Remove all non-word characters
             .replace(/--+/g, '-') // Replace multiple — with single -
-            .replace(/^-+/, ''); // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
+            .replace(/^-+/, '') // Trim — from start of text
+            .replace(/-+$/, ''); // Trim — from end of text
     }
     static createFindRegex(value) {
+        if (!value) {
+            throw new Error('Regex string cannot be empty');
+        }
         value = value.replace('\\', '\\\\');
         value = value.replace('^', '\\^');
         value = value.replace('$', '\\$');

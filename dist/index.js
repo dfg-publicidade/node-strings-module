@@ -35,20 +35,20 @@ class Strings {
         if (!value) {
             throw new Error('Regex string cannot be empty');
         }
-        value = value.replace('\\', '\\\\');
-        value = value.replace('^', '\\^');
-        value = value.replace('$', '\\$');
-        value = value.replace('.', '\\.');
-        value = value.replace('|', '\\|');
-        value = value.replace('?', '\\?');
-        value = value.replace('*', '\\*');
-        value = value.replace('+', '\\+');
-        value = value.replace('(', '\\(');
-        value = value.replace(')', '\\)');
-        value = value.replace('[', '\\[');
-        value = value.replace(']', '\\]');
-        value = value.replace('{', '\\{');
-        value = value.replace('}', '\\}');
+        value = value.replace(/\\/ig, '\\\\');
+        value = value.replace(/\^/ig, '\\^');
+        value = value.replace(/\$/ig, '\\$');
+        value = value.replace(/\./ig, '\\.');
+        value = value.replace(/\|/ig, '\\|');
+        value = value.replace(/\?/ig, '\\?');
+        value = value.replace(/\*/ig, '\\*');
+        value = value.replace(/\+/ig, '\\+');
+        value = value.replace(/\(/ig, '\\(');
+        value = value.replace(/\)/ig, '\\)');
+        value = value.replace(/\[/ig, '\\[');
+        value = value.replace(/\]/ig, '\\]');
+        value = value.replace(/\{/ig, '\\{');
+        value = value.replace(/\}/ig, '\\}');
         value = value.replace(/[aàáäâãå]/ig, '[aàáäâãå]');
         value = value.replace(/[eèéëê]/ig, '[eèéëê]');
         value = value.replace(/[iìíïî]/ig, '[iìíïî]');
@@ -58,4 +58,5 @@ class Strings {
         return new RegExp(value, 'gmi');
     }
 }
+Strings.createFindRegex('x\\zx\\');
 exports.default = Strings;

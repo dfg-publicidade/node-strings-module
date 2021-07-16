@@ -5,8 +5,10 @@ class Strings {
     }
 
     public static getFirstName(name: string): string {
-        return name && name.indexOf(' ') > -1
-            ? name.substr(0, name.indexOf(' '))
+        return name
+            ? name.indexOf(' ') > -1
+                ? name.substr(0, name.indexOf(' '))
+                : name
             : '';
     }
 

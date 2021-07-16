@@ -6,8 +6,10 @@ class Strings {
         return id ? id.toString().padStart(length, '0') : '';
     }
     static getFirstName(name) {
-        return name && name.indexOf(' ') > -1
-            ? name.substr(0, name.indexOf(' '))
+        return name
+            ? name.indexOf(' ') > -1
+                ? name.substr(0, name.indexOf(' '))
+                : name
             : '';
     }
     static firstCharToUpper(str) {
